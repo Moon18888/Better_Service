@@ -1,3 +1,5 @@
+CREATE DATABASE BetterService;
+USE BetterService;
 
 CREATE TABLE usuario (
     id_usuario INT IDENTITY(1,1) PRIMARY KEY,
