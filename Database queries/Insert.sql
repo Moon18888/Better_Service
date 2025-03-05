@@ -100,6 +100,21 @@ INSERT INTO especialistas (id_especialista, job_title, id_grupo) VALUES
 (23620, 'Agent', 1),
 (23621, 'SAP SD Specialist', 6);
 
+
+--Revisar si identity insert esta disponible en las tablas.
+SELECT IDENT_CURRENT('usuario') AS CurrentIdentityValue;
+SELECT IDENT_CURRENT('impacto') AS CurrentIdentityValue;
+SELECT IDENT_CURRENT('urgencia') AS CurrentIdentityValue;
+SELECT IDENT_CURRENT('prioridad') AS CurrentIdentityValue;
+SELECT IDENT_CURRENT('estatus') AS CurrentIdentityValue;
+SELECT IDENT_CURRENT('grupossoporte') AS CurrentIdentityValue;
+SELECT IDENT_CURRENT('categorias') AS CurrentIdentityValue;
+SELECT IDENT_CURRENT('especialistas') AS CurrentIdentityValue;
+SELECT IDENT_CURRENT('incidencias') AS CurrentIdentityValue;
+SELECT IDENT_CURRENT('notas') AS CurrentIdentityValue;
+
+SET IDENTITY_INSERT incidencias ON;
+
 INSERT INTO incidencias (id_incidencia, fecha, id_usuario, short_description, descripcion, id_urgencia, id_impacto, id_prioridad, id_categoria, id_subcategoria, id_grupos, id_especialista) VALUES
 (1, '2025-01-01', 23589, 'Network issue', 'User cannot connect to the network', 1, 1, 1, 1, 5, 1, 23619),
 (2, '2025-01-02', 23590, 'Hardware failure', 'User reports a broken keyboard', 2, 2, 2, 2, 7, 2, 23620),
@@ -183,6 +198,7 @@ INSERT INTO incidencias (id_incidencia, fecha, id_usuario, short_description, de
 (80, '2025-03-21', 23598, 'Bitlocker problem', 'User cannot unlock Bitlocker drive', 2, 2, 2, 2, 8, 2, 23619),
 (81, '2025-03-22', 23599, 'SAP error', 'SAP transaction fails', 3, 3, 3, 3, 10, 3, 23620),
 (82, '2025-03-23', 23600, 'M365 issue', 'User cannot access M365 services', 1, 1, 1, 3, 10, 3, 23621);
+
 
 INSERT INTO notas (id_incidencia, id_especialista, fecha_nota, descripcion) VALUES
 (1, 23619, '2025-01-01', 'Revisando la conexión de red.'),
