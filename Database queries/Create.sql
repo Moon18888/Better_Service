@@ -74,9 +74,10 @@ CREATE TABLE incidencias (
     FOREIGN KEY (id_impacto) REFERENCES impacto(id_impacto),
     FOREIGN KEY (id_prioridad) REFERENCES prioridad(id_prioridad),
     FOREIGN KEY (id_categoria) REFERENCES categorias(id_categoria),
-    FOREIGN KEY (id_subcategoria) REFERENCES categorias(id_categoria),
+    FOREIGN KEY (id_subcategoria) REFERENCES categorias(id_subcategoria),
     FOREIGN KEY (id_grupos) REFERENCES grupossoporte(id_grupos),
-   );
+    FOREIGN KEY (id_especialista) REFERENCES especialistas(id_especialista)
+);
 
 CREATE TABLE notas (
     id_notas INT IDENTITY(1,1) PRIMARY KEY,
