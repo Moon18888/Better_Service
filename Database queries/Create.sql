@@ -1,5 +1,6 @@
-CREATE DATABASE BetterService;
-USE BetterService;
+create database BetterService
+Use BetterService
+
 
 CREATE TABLE usuario (
     id_usuario INT IDENTITY(1,1) PRIMARY KEY,
@@ -38,15 +39,12 @@ CREATE TABLE grupossoporte (
     nivel INT NOT NULL
 );
 
-
 CREATE TABLE categorias (
-    id_categoria INT IDENTITY(1,1)Primary key,
+    id_categoria INT IDENTITY(1,1) PRIMARY KEY,
     descripcion VARCHAR(100) NOT NULL,
     id_subcategoria INT,
     FOREIGN KEY (id_subcategoria) REFERENCES categorias(id_categoria)
-
 );
-
 
 CREATE TABLE especialistas (
     id_especialista INT,
@@ -57,7 +55,7 @@ CREATE TABLE especialistas (
 );
 
 CREATE TABLE incidencias (
-    id_incidencia INT PRIMARY KEY,
+    id_incidencia INT IDENTITY(1,1) PRIMARY KEY,
     fecha DATE,
     id_usuario INT,
     short_description VARCHAR(255),
@@ -77,7 +75,6 @@ CREATE TABLE incidencias (
     FOREIGN KEY (id_subcategoria) REFERENCES categorias(id_categoria),
     FOREIGN KEY (id_grupos) REFERENCES grupossoporte(id_grupos),
     FOREIGN KEY (id_especialista) REFERENCES usuario(id_usuario)
-
 );
 
 CREATE TABLE notas (
@@ -89,5 +86,3 @@ CREATE TABLE notas (
     FOREIGN KEY (id_incidencia) REFERENCES incidencias(id_incidencia),
     FOREIGN KEY (id_especialista) REFERENCES usuario(id_usuario)
 );
-
-
