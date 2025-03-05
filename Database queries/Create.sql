@@ -31,13 +31,6 @@ CREATE TABLE estatus (
     descripcion VARCHAR(50)
 );
 
-CREATE TABLE categorias (
-    id_categoria INT IDENTITY(1,1)Primary key,
-    descripcion VARCHAR(100) NOT NULL,
-    id_subcategoria INT,
-	Unique(id_subcategoria)
-);
-
 CREATE TABLE grupossoporte (
     id_grupos INT IDENTITY(1,1) PRIMARY KEY,
     grupo VARCHAR(100) NOT NULL,
@@ -45,8 +38,18 @@ CREATE TABLE grupossoporte (
     nivel INT NOT NULL
 );
 
+
+CREATE TABLE categorias (
+    id_categoria INT IDENTITY(1,1)Primary key,
+    descripcion VARCHAR(100) NOT NULL,
+    id_subcategoria INT,
+    FOREIGN KEY (id_subcategoria) REFERENCES categorias(id_categoria)
+
+);
+
+
 CREATE TABLE especialistas (
-    id_especialista INT primary key,
+    id_especialista INT,
     job_title VARCHAR(100) NOT NULL,
     id_grupo INT,
     FOREIGN KEY (id_especialista) REFERENCES usuario(id_usuario),
@@ -71,10 +74,9 @@ CREATE TABLE incidencias (
     FOREIGN KEY (id_impacto) REFERENCES impacto(id_impacto),
     FOREIGN KEY (id_prioridad) REFERENCES prioridad(id_prioridad),
     FOREIGN KEY (id_categoria) REFERENCES categorias(id_categoria),
-    FOREIGN KEY (id_subcategoria) REFERENCES categorias(id_subcategoria),
+    FOREIGN KEY (id_subcategoria) REFERENCES categorias(id_categoria),
     FOREIGN KEY (id_grupos) REFERENCES grupossoporte(id_grupos),
-    FOREIGN KEY (id_especialista) REFERENCES especialistas(id_especialista)
-);
+   );
 
 CREATE TABLE notas (
     id_notas INT IDENTITY(1,1) PRIMARY KEY,
