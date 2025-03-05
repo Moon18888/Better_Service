@@ -1,6 +1,10 @@
---SET IDENTITY_INSERT usuario ON;
+USE BetterService;
 
-INSERT INTO usuario (id_usuario, nombre, apellido_P, apellido_M, coreo, telefono, ubicacion) VALUES
+-- Ejecutar cada tabla individualmente en el orden que se presentan 
+
+SET IDENTITY_INSERT usuario ON;
+
+INSERT INTO usuario (id_usuario, nombre, apellido_P, apellido_M, correo, telefono, ubicacion) VALUES
 (23589, 'Juan', 'Perez', 'Lopez', 'juan.perez@example.com', '5551234567', 'Ciudad de México'),
 (23590, 'Maria', 'Garcia', 'Hernandez', 'maria.garcia@example.com', '5551234568', 'Guadalajara'),
 (23591, 'Carlos', 'Martinez', 'Gomez', 'carlos.martinez@example.com', '5551234569', 'Monterrey'),
@@ -37,7 +41,7 @@ INSERT INTO usuario (id_usuario, nombre, apellido_P, apellido_M, coreo, telefono
 (23622, 'Samantha', 'Villarreal', 'Hermida', 'Samantha.Villarreal@syntax.com', '2255846546', 'Puebla'),
 (23623, 'Rafael', 'Galaviz', 'Valdez', 'rafael.galaviz@syntax.com', '2222566448', 'Puebla');
 
---SET IDENTITY_INSERT usuario OFF;
+SET IDENTITY_INSERT usuario OFF;
 
 INSERT INTO impacto (descripcion) VALUES
 ('Single user'),
@@ -63,10 +67,12 @@ INSERT INTO estatus (descripcion) VALUES
 ('In Progress');
 
 INSERT INTO categorias (descripcion, id_subcategoria) VALUES
-('Network', 0),
-('Hardware', 0),
-('Software', 0),
-('Security', 0),
+('Network', NULL),
+('Hardware', NULL),
+('Software', NULL),
+('Security', NULL);
+
+INSERT INTO categorias (descripcion, id_subcategoria) VALUES
 ('IP', 1),
 ('DNS', 1),
 ('Peripherals', 2),
@@ -75,6 +81,7 @@ INSERT INTO categorias (descripcion, id_subcategoria) VALUES
 ('M365', 3),
 ('Malware', 4),
 ('Phishing', 4);
+
 
 INSERT INTO grupossoporte (grupo, descripcion, nivel) VALUES
 ('Service Desk', 'First level support', 1),
@@ -208,3 +215,4 @@ INSERT INTO notas (id_incidencia, id_especialista, fecha_nota, descripcion) VALU
 (28, 23622, '2025-01-28', 'Investigando el inicio de sesión sospechoso.'),
 (29, 23623, '2025-01-29', 'Resolviendo conflicto de IP.'),
 (30, 23619, '2025-01-30', 'Configurando DNS.');
+
