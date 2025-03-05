@@ -6,7 +6,7 @@ CREATE TABLE usuario (
     nombre VARCHAR(50),
     apellido_P VARCHAR(50),
     apellido_M VARCHAR(50),
-    coreo VARCHAR(50),
+    correo VARCHAR(50),
     telefono VARCHAR(15),
     ubicacion VARCHAR(200)
 );
