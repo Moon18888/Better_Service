@@ -1,7 +1,6 @@
 CREATE PROCEDURE sp_CrearNota
     @id_incidencia INT,
     @id_especialista INT,
-    @fecha_nota DATETIME,
     @descripcion VARCHAR(100)
 AS
 BEGIN
@@ -9,11 +8,11 @@ BEGIN
         BEGIN TRANSACTION;
 
         -- Verificar si la incidencia y el especialista existen antes de insertar
-        IF EXISTS (SELECT 1 FROM incidencias WHERE id_incidencia = @id_incidencia) 
+        IF EXISTS (SELECT 1 FROM incidencias WHERE id_incidencia = @id_incidencia)
         AND EXISTS (SELECT 1 FROM usuario WHERE id_usuario = @id_especialista)
         BEGIN
             INSERT INTO notas (id_incidencia, id_especialista, fecha_nota, descripcion)
-            VALUES (@id_incidencia, @id_especialista, @fecha_nota, @descripcion);
+            VALUES (@id_incidencia, @id_especialista, GETDATE(), @descripcion);
 
             COMMIT TRANSACTION;
             PRINT 'Nota registrada exitosamente.';
