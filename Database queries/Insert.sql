@@ -53,10 +53,10 @@ INSERT INTO urgencia (descripcion) VALUES
 ('Unable to work');
 
 INSERT INTO prioridad (descripcion) VALUES
-('Critical'),
-('High'),
+('Low'),
 ('Medium'),
-('Low');
+('High'),
+('Critical');
 
 INSERT INTO estatus (descripcion) VALUES
 ('Open'),
