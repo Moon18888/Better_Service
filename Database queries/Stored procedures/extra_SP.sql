@@ -1,4 +1,4 @@
-actualizar el estado de una incidencia
+-- actualizar el estado de una incidencia
 
 CREATE PROCEDURE sp_update_incidencia_estatus
 @id_incidencia INT,
@@ -10,4 +10,15 @@ BEGIN
     WHERE id_incidencia = @id_incidencia;
 END;
 
- agregar una nota a una incidencia
+-- asignar un grupo de soporte a una incidencia
+
+CREATE PROCEDURE sp_assign_group
+@id_incidencia INT,
+@id_grupos INT
+AS
+BEGIN
+    UPDATE incidencias
+    SET id_grupos = @id_grupos
+    WHERE id_incidencia = @id_incidencia;
+END;
+
