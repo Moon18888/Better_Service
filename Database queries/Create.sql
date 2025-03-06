@@ -69,6 +69,7 @@ CREATE TABLE incidencias (
     id_subcategoria INT,
     id_grupos INT,
     id_especialista INT,
+    id_estatus INT,
     FOREIGN KEY (id_usuario) REFERENCES usuario(id_usuario),
     FOREIGN KEY (id_urgencia) REFERENCES urgencia(id_urgencia),
     FOREIGN KEY (id_impacto) REFERENCES impacto(id_impacto),
@@ -76,7 +77,8 @@ CREATE TABLE incidencias (
     FOREIGN KEY (id_categoria) REFERENCES categorias(id_categoria),
     FOREIGN KEY (id_subcategoria) REFERENCES categorias(id_categoria),
     FOREIGN KEY (id_grupos) REFERENCES grupossoporte(id_grupos),
-    FOREIGN KEY (id_especialista) REFERENCES usuario(id_usuario)
+    FOREIGN KEY (id_especialista) REFERENCES usuario(id_usuario),
+    FOREIGN KEY (id_estatus) REFERENCES estatus(id_estatus)
    );
 
 CREATE TABLE notas (
