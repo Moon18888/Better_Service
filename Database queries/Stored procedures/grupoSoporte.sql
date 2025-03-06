@@ -7,19 +7,29 @@ BEGIN
     BEGIN TRY
         BEGIN TRANSACTION;
 
-        -- Insertar nuevo grupo
+        -- Check if the group already exists
+        IF EXISTS (SELECT 1 FROM grupossoporte WHERE grupo = @grupo)
+        BEGIN
+            -- Raise an error if the group already exists
+            PRINT 'El grupo ya existe. No se puede duplicar.'
+            ROLLBACK TRANSACTION;
+            RETURN;
+        END
+        -- Insert new group
         INSERT INTO grupossoporte (grupo, descripcion, nivel)
         VALUES (@grupo, @descripcion, @nivel);
 
+        -- Commit transaction
         COMMIT TRANSACTION;
         PRINT 'Grupo de soporte creado exitosamente.';
     END TRY
     BEGIN CATCH
-        ROLLBACK TRANSACTION;
-        PRINT 'Error al crear el grupo de soporte.';
+        -- Rollback transaction in case of error
+        IF @@TRANCOUNT > 0
+            ROLLBACK TRANSACTION;
+        PRINT 'Error al crear el grupo de soporte '
     END CATCH
 END;
-
 
 
 
